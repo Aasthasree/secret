@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Card</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background-color: #ffebeb; text-align: center; }
+        .container { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .question { font-size: 2em; color: #d60000; font-weight: bold; }
+        .buttons { margin-top: 20px; position: relative; }
+        .btn { padding: 10px 20px; font-size: 1.5em; margin: 10px; border: none; cursor: pointer; border-radius: 10px; }
+        .yes { background-color: #ff4d4d; color: white; }
+        .no { background-color: #ccc; color: black; position: absolute; transition: all 0.3s; }
+        .hidden { display: none; }
+        .message-box { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px; }
+        .roses { font-size: 3em; color: red; }
+        .hearts { color: red; font-size: 2em; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <div class="hearts">❤️❤️❤️</div>
+        <p class="question">Will you be my Valentine?</p>
+        <div class="buttons">
+            <button class="btn yes" onclick="showMessageBox()">Yes</button>
+            <button class="btn no" onmouseover="moveNoButton()">No</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="page2">
+        <div class="roses">🌹🌹🌹</div>
+        <p class="question">We have completed 8 years of love and friendship! 💕</p>
+        <div class="message-box">
+            <textarea rows="5" cols="40" placeholder="Write your Valentine message here..."></textarea>
+        </div>
+    </div>
+    
+    <script>
+        function showMessageBox() {
+            document.getElementById("page1").classList.add("hidden");
+            document.getElementById("page2").classList.remove("hidden");
+        }
+        function moveNoButton() {
+            let noButton = document.querySelector(".no");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
